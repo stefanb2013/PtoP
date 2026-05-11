@@ -1,0 +1,27 @@
+;***********************************************************************************
+;
+; Ptop Sample Modul 3
+;
+; Dieses Datenobjekt soll lediglich die Parametrierung eines Moduls zeigen
+;
+; Merkmal: Parametrierung über Ip Adresse, Verwendung alter Modus
+;
+;*************************************************************************************
+;
+; Datenmodul zur Ermittlung von Variablen, angefordert wird über den HOST Namen
+;
+;*********************************************************************************************
+
+
+"#UST"										  ;Schluesselwort fuer die einzelne UST
+"#Modus:0"				          ;Übertragungsmodus
+192,168,10,100,			        ;Ip Adresse des Servers  
+03000, 00000, 00000, 00000, 00000  ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer                       VarClient                        Hyst   Init   Reman. Ersatz  Sync
+"Task1:VariableQuelle1"       ,"TkClient:VariableZiel1"          ,00001, 00000, 00001, 65535, 00010
+"Task2:VariableQuelle2"       ,"TkClient:VariableZiel2"          ,00001, 00000, 00001, 65535, 00010
+"GlobaleVariable.Item1"       ,"TkClient1:GlobVarZiel1"          ,00010, 00000, 00001, 65535, 00010
+"GlobaleVariable.Item3"       ,"TkClient1:GlobVarZiel3"          ,00001, 00000, 00001, 65535, 00010
+
+
+

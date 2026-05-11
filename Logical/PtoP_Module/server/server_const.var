@@ -1,0 +1,18 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker+Rainer
+ ********************************************************************
+ * Program: server
+ * File: server_const.var
+ * Author: B&R
+ * Created: July 13, 2018
+ ********************************************************************
+ * Local variables of program server
+ ********************************************************************)
+(*- - - enable logging from start *)
+VAR CONSTANT
+	LOGGER_START_ENABLE : USINT := 0;
+END_VAR
+(*- - - diagnosis list length*)
+VAR CONSTANT
+	DIAG_PV_RESULT_LIST : USINT := 10;
+END_VAR

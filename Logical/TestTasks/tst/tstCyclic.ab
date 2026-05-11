@@ -1,0 +1,10 @@
+PROGRAM _CYCLIC
+(* cyclic program *)
+
+if bLoopCnt = 1 then
+	loop i = 0 to 299 do
+		VarQuelle[i] = VarQuelle[i] + 1
+	endloop
+endif
+END_PROGRAM
+

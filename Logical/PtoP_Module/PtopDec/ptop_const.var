@@ -1,0 +1,55 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker+Rainer
+ ********************************************************************
+ * Package: ptop
+ * File: ptop_const.var
+ * Author: B&R
+ * Created: July 12, 2018
+ ********************************************************************
+ * Variables of package ptop
+ ********************************************************************)
+(*- - - Allgemeine Konstanten*)
+VAR CONSTANT
+	IP_ADR_LEN : UINT := 18;
+	IP_ADR_LEN_ARR : UINT := IP_ADR_LEN-1;
+	PV_LENGTH : UINT := 50; (*länge einer Variable*)
+	PV_LENGTH_ARR : UINT := PV_LENGTH - 1; (*summe 50 zeichen, aber von 0 bis 49*)
+	MAX_NR_DIAGNOSE : UINT := 100;
+	MAX_NR_DIAGNOSE_ARR : UINT := MAX_NR_DIAGNOSE-1;
+	PORT_CNT : USINT := 6;
+	PORT_CNT_ARR : USINT := PORT_CNT-1;
+	MAX_NR_STEP_DIAGNOSE : UINT := 70;
+	MAX_NR_STEP_DIAGNOSE_ARR : UINT := MAX_NR_STEP_DIAGNOSE-1;
+	HOST_NAME_LEN : UINT := 33;
+	HOST_NAME_LEN_ARR : UINT := HOST_NAME_LEN-1;
+END_VAR
+(*- - - client Konstanten*)
+VAR CONSTANT
+	MAX_VARIABLEN : UINT := 1000; (*Anzahl der zu verwaltenden Variablen*)
+	MAX_VARIABLEN_ARR : UINT := MAX_VARIABLEN-1;
+	MAX_SERVER : UINT := 100; (*Anzahl der zu verwaltenden Server*)
+	MAX_SERVER_ARR : UINT := MAX_SERVER-1; (*Anzahl der zu verwaltenden Server*)
+	OPEN_BUFFER_LEN : UINT := 50+PV_LENGTH;
+	LIFE_BUFFER_LEN : USINT := 10;
+	LIFE_BUFFER_LEN_ARR : USINT := LIFE_BUFFER_LEN-1;
+END_VAR
+(*- - - server Konstanten*)
+VAR CONSTANT
+	MAX_CLIENT_VARIABLEN : UINT := 1000; (*max. Anzahl der Variablen, welche auf einem Server verwaltet werden können*)
+	MAX_CLIENT_VARIABLEN_ARR : UINT := MAX_CLIENT_VARIABLEN-1;
+	MAX_ANZAHL_CLIENTS : UINT := 100;
+	MAX_ANZAHL_CLIENTS_ARR : UINT := MAX_ANZAHL_CLIENTS-1;
+END_VAR
+(*- - - stephandler*)
+VAR CONSTANT
+	nBRB_STEP_TEXT_CHAR_MAX : USINT := 50;
+	nBRB_STEPLOG_STEPS_MAX : USINT := 20;
+	nBRB_STEPLOG_STEPS_MAX_CPY : USINT := 20;
+END_VAR
+(*- - - data logging*)
+VAR CONSTANT
+	START_LOG_TXT : STRING[40] := 'data logging started:';
+	PTOP_LOG_SEVERITY_INFO : UINT := 1;
+	PTOP_LOG_SEVERITY_WARNING : UINT := 2;
+	PTOP_LOG_SEVERITY_ERROR : UINT := 3;
+END_VAR

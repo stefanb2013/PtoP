@@ -1,0 +1,5 @@
+VAR
+	ptopSourcePV : ARRAY[0..19] OF UINT;
+	ptopTargetPV : ARRAY[0..99] OF UINT;
+	ptopSourceBOOL : ARRAY[0..19] OF BOOL;
+END_VAR

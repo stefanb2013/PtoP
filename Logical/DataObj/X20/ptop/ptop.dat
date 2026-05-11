@@ -1,0 +1,30 @@
+"#UST"                        ;Keyword for a single station
+"#Modus:1"										;Modus - alter Modus = 0; neuer Modus = 1
+10,49,10,223
+02000, 00000, 00000, 00000, 00000          ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer             VarClient        Hyst   Init   Reman. Ersatz  Sync
+"test:ptopSourcePV[0]",          "test:ptopTargetPV[0]",      00000, 00000, 00000, 10001, 00010
+"test:ptopSourcePV[1]",          "test:ptopTargetPV[1]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[2]",          "test:ptopTargetPV[2]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourceMytrash[15]",    "test:ptopSourcePV[4]",      00000, 00000, 00000, 00000, 00010
+"test:ptopSourcePV[3]",          "test:ptopTargetPV[3]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[4]",          "test:ptopTargetPV[4]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[5]",          "test:ptopTargetPV[5]",      00000, 00000, 00000, 10002, 00010
+"test:ptopTargetBOOL[0]",        "test:ptopSourceBOOL[0]",    00000, 00000, 00000, 00000, 00010
+"test:ptopSourceMytrash[11]",    "test:ptopTargetPV[10]",  00000, 00000, 00000, 00000, 00010
+"test:ptopSourceMytrash[12]",    "test:ptopTargetPV[11]",  00000, 00000, 00000, 00000, 00010
+"test:ptopSourceMytrash[13]",    "test:ptopTargetPV[12]",  00000, 00000, 00000, 00000, 00010
+"test:ptopSourceMytrash[14]",    "test:ptopTargetPV[13]",  00000, 00000, 00000, 00000, 00010
+
+"#UST"                        ;Keyword for a single station
+"#Modus:1"										;Modus - alter Modus = 0; neuer Modus = 1
+10,49,10,224
+02500, 00000, 00000, 00000, 00000          ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer             VarClient        Hyst   Init   Reman. Ersatz  Sync
+"test:ptopSourcePV[0]",          "test:ptopTargetPV[14]",      00000, 00000, 00000, 10001, 00010
+"test:ptopSourcePV[1]",          "test:ptopTargetPV[15]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[2]",          "test:ptopTargetPV[16]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[3]",          "test:ptopTargetPV[17]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[4]",          "test:ptopTargetPV[18]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[5]",          "test:ptopTargetPV[19]",      00000, 00000, 00000, 10002, 00010
+"test:ptopTargetBOOL[0]",        "test:ptopSourceBOOL[1]",    00000, 00000, 00000, 00000, 00010

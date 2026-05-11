@@ -1,0 +1,14 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Program: getClFile
+ * File: getClFile.var
+ * Author: B&R
+ * Created: March 03, 2014
+ ********************************************************************
+ * Local variables of program getClFile
+ ********************************************************************)
+VAR
+	PtopServGetClients_0 : PtopServGetClients;
+	bCmdBuild : BOOL;
+END_VAR

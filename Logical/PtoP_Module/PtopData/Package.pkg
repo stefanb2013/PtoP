@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.2.116?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Package">Sample1</Object>
+    <Object Type="Package">Sample2</Object>
+    <Object Type="Package">Sample3</Object>
+  </Objects>
+</Package>

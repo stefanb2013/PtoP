@@ -1,0 +1,6 @@
+VAR
+	ResultValue1 : UDINT;
+	ResultValue : UDINT;
+	LastValue : UDINT;
+	FirstValue : UDINT;
+END_VAR

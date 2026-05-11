@@ -1,0 +1,171 @@
+(*****************************************************************
+  Created with BrIecConverter V1.00
+  File: server.var
+  Date: 2018.07.12 15:58
+*****************************************************************)
+(*- - - UDP Bibliothek - - - - - - - - - -*)
+VAR
+	UDPopenFub : ARRAY[0..PORT_CNT_ARR] OF UdpOpen; (*Port öffnen*)
+	UDPcloseFub : ARRAY[0..PORT_CNT_ARR] OF UdpClose; (*Port schliessen*)
+	UDPreceiveFub : UdpRecv; (*UDP Empfangen fï¿½r Anmeldevorgang*)
+	UDPsendFub : UdpSend; (*UDP Senden fï¿½r Anmeldevorgang*)
+	UDPreceiveEventFub : UdpRecv; (*UDP Empfangen fï¿½r Eventauswertung*)
+	UDPsendEventFub : {REDUND_UNREPLICABLE} UdpSend := (0); (*UDP Senden fï¿½r Eventauswertung*)
+	UDPreceiveLiveFub : UdpRecv; (*UDP Empfangen fï¿½r Lifecheck*)
+	UDPsendLiveFub : UdpSend; (*UDP Senden fï¿½r Lifecheck*)
+	UdpIoctlFub : ARRAY[0..PORT_CNT_ARR] OF UdpIoctl; (*UDP Setzen von Optionen*)
+	udpSendFlags : UDINT; (*Flags mit Optionen fï¿½r das Senden*)
+END_VAR
+(*- - - Zeitverzögerung - - - - - - - - - - - - - - - - - - - - - - - - *)
+VAR
+	udStatusTimer : UDINT;
+	udTimeTick : UDINT;
+	udTickCnt : UDINT;
+END_VAR
+(*- - - Telegrammdeklarationen - - - - - - - - - - - - - - - - - -*)
+VAR
+	sPVOpenRequest : PVOpenRequest_typ; (*Open - Anmeldung einer Variable an den Server*)
+	sPVOpenResponse : PVOpenResponse_typ; (*Open - Rï¿½ckmeldung der Anmeldung der Variablen an Client*)
+	sClientConnectRequest : ClientConnectRequest_typ; (*Client meldet einen neuen 'Schwung' Variablen an Server an*)
+	sClientConnectResponse : ClientConnectResponse_typ; (*Server sendet 'Bereit' fï¿½r Open an Client*)
+	sPVEventAcknowledge : PVEventAcknowledge_typ; (*Bestï¿½tigung des Event - Telegrammes von Client*)
+	sLifeCheckRequest : LifeCheckRequest_typ; (*Lebensï¿½berwachung Client - Server*)
+	sLifeCheckResponse : LifeCheckResponse_typ; (*Lebensï¿½berwachung Server - Server*)
+	sClientLink : ClientLink_typ; (*Nachdem alle Variablen angemeldet wurden wird mit Link abgschlossen*)
+	sNAK : AckResponse_typ; (*Bestï¿½tigungstelegramm -> kann in Kennung ACKN oder NACK haben*)
+	sPVEvent : PVEvent_typ; (*Event - Telegramm Server an Client*)
+	sClientLinkSave : ClientLink_typ;
+	sPVOpenResponseSave : PVOpenResponse_typ;
+	sNAKSave : AckResponse_typ;
+	sLifeCheckResponseSafe : LifeCheckResponse_typ;
+	sPVOpenRequestX : PVOpenRequestX_typ;
+END_VAR
+(*- - -*)
+VAR
+	arRecvOpenIpAdr : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen (nur Dummy, damit Adresse ï¿½bergeben wird*)
+	arRecvEvntIpAdr : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen (nur Dummy, damit Adresse ï¿½bergeben wird*)
+	arRecvLifeIpAdr : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen (nur Dummy, damit Adresse ï¿½bergeben wird*)
+END_VAR
+(*- - - Listen zur Verwaltung des Servers - - - - - - - - - - - - -*)
+VAR
+	pClientListeStart : REFERENCE TO ClientListeEntry_typ; (*Zeiger auf StartAdresse der Clientverwaltung -> nicht beschreiben!*)
+	pClientListeWork : REFERENCE TO ClientListeEntry_typ; (*Zeiger auf StartAdresse der Clientverwaltung -> nicht beschreiben!*)
+	pClientListeLiveCheck : REFERENCE TO ClientListeEntry_typ; (*Zeiger auf StartAdresse der Clientverwaltung -> nicht beschreiben!*)
+	pPVListeStart : REFERENCE TO PVListEntry_typ; (*Zeiger auf StartAdresse der Variablenverwaltung -> nicht beschreiben!*)
+	StatusTmpAlloc : ARRAY[0..2] OF UINT;
+	bDataObjFlag : BOOL;
+	Telegrammstatus : UINT;
+	ClientConfCnt : UINT;
+END_VAR
+(*- - - Pipe - Verwaltung - - - - - - - - - - - - *)
+VAR
+	PipeStartAdress : ARRAY[0..MAX_ANZAHL_CLIENTS_ARR] OF UDINT; (*Start - Adresse für Pipes *)
+	PipeStopAdress : ARRAY[0..MAX_ANZAHL_CLIENTS_ARR] OF UDINT; (*Stop  - Adresse fï¿½r Pipes*)
+	PipeData : PipeManagement_typ; (*Einfï¿½gestruktur bei Pipes schreiben*)
+	PipeLock : ARRAY[0..MAX_ANZAHL_CLIENTS] OF PipeLock_typ;
+END_VAR
+(*- - - Arbeitsvariablen - - - - - - - - - -*)
+VAR
+	iClient : UINT;
+	iPortNr : UINT;
+	arRecvBufLife : ARRAY[0..9] OF USINT;
+	arSendBufLife : ARRAY[0..9] OF USINT;
+	IpAdrSource : UDINT; (*eigene Ip Adresse*)
+	arIpAdrSource : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen*)
+	PortTarget : ARRAY[0..PORT_CNT_ARR] OF UINT; (*Zielports  - Senden*)
+	PortSource : ARRAY[0..PORT_CNT_ARR] OF UINT; (*Quellports - Empfangen*)
+	StepConnect : PtopStepProt_type; (*Schrittschaltwerk - Anmeldung*)
+END_VAR
+(*- - - *)
+VAR
+	CRCCheckTemp : UINT;
+	ClientVerwaltungAktuell : UINT;
+	ClientVerwaltungEinfuegen : UINT;
+	bOpenOk : BOOL; (*Open fï¿½r eine Variable erfolgreich*)
+	pPVWert32 : REFERENCE TO UDINT;
+	pPVWert16 : REFERENCE TO UINT;
+	pPVWert08 : REFERENCE TO USINT;
+	pPvAdrServer : UDINT;
+	PvLaengeServer : UDINT;
+	uiState : UINT;
+	OpenUDPCnt : UINT;
+END_VAR
+(*- - - Eventauswertung - - - - - - - - - - - - - - - - -*)
+VAR
+	EventAuswertung : Event_typ;
+	StepEventRecv : PtopStepProt_type;
+	StepEventSend : PtopStepProt_type;
+	AckFailed : UINT;
+	SaveIntoPipe : BOOL;
+	EventSend : EventSend_typ;
+	pClientListeEventSend : REFERENCE TO ClientListeEntry_typ;
+	DeleteClientStatus : UINT;
+END_VAR
+(*- - - Lifecheck - - - - - - - - - - -*)
+VAR
+	UDPLifeCheck : UINT;
+	LifeClientFound : UINT;
+	HelpString1 : ARRAY[0..63] OF USINT; (*Strings für zusammenkopieren von Logbucheinträgen*)
+	HelpString2 : ARRAY[0..31] OF USINT;
+END_VAR
+(*- - - Monitore - - - - - - - - - - - -*)
+VAR
+	Monitor : MonitorServer_typ; (*Verwaltung für Monitor(Variablen, Clients)*)
+	PvMonitor : PVListEntry_typ; (*Variablenmonitor*)
+	ClientMonitor : ClientListeEntry_typ; (*Clientmonitor*)
+	PipeMonitor : PipeMonitor_typ; (*Verwaltung fï¿½r Pipemonitor*)
+	pPipeMonitor : REFERENCE TO PipeManagement_typ; (*Zeiger fï¿½r Pipemonitor*)
+	Diagnose : DiagnoseServMain_typ;
+END_VAR
+(*- - - Diagnose ptop Kommunikation - - - - - - - - - - - -*)
+VAR
+	sPtopConf : PtopConf_Typ;
+	bConfState : BOOL;
+	bTest : BOOL;
+	sdCmpRes : DINT;
+	udIoCtlParamSendBuf : UDINT;
+	udIoCtlParamRecvBuf : UDINT;
+	uiSetOptions : UINT;
+	uiSetOptionsCnt : UINT;
+END_VAR
+(*- - - *)
+VAR
+	pSendBufOpen : REFERENCE TO UDINT; (*Buffer für Telegramm "OPEX"*)
+	pRecvBufOpen : REFERENCE TO UDINT; (*Buffer fï¿½r Telegramm "OPEX"*)
+	pSendBufEvent : REFERENCE TO UDINT; (*Buffer fï¿½r Telegramm "EVNX"*)
+	pRecvBufEvent : REFERENCE TO UDINT; (*Buffer fï¿½r Telegramm "EVNX"*)
+	bValidate : BOOL; (*Abfrage: gï¿½ltiges Telegramm*)
+	arKennung : ARRAY[0..3] OF USINT; (*Buffer f. Telegramm - Kennung*)
+	bGetData : BOOL; (*Daten aus Empfangsbuffer holen: Status*)
+	uiPvEntry : UINT; (*Eintrag aus Buffer*)
+	uiPvExists : UINT; (*Existiert die Variable in der Verwaltung*)
+	uiPvOffset : UINT; (*Offset f. Platz in Client u.  Variablenliste*)
+	uiClntOffset : UINT;
+	udVal : UDINT; (*Wert der Variable*)
+	uiPvCnt : UINT; (*Anzahl der Variablen in Telegramm*)
+	uiClientIndex : UINT; (*Clientnr*)
+	uiOpenTelLen : UINT; (*Telegrammlï¿½nge fï¿½r Anmeldung*)
+	uiEvntTelLen : UINT; (*Telegrammlï¿½nge fï¿½r Events*)
+	bGetPipeDataForEvent : BOOL; (*Status: Daten in Pipe f. neuen Modus*)
+	uiClientEventNr : UINT; (*Offset fï¿½r Client, Werte auf Pipe nehmen*)
+	sMemManager : MemManagerServ_type;
+	udAdrOffset : UDINT;
+	DataObjCreateFub : DatObjCreate;
+	DatObjInfoFub : DatObjInfo;
+	DatObjDeleteFub : DatObjDelete;
+	bClientCheck : BOOL;
+	SwVersion : UDINT; (*SW - Version des ptop*)
+	sMemDiag : MemManagerDiag_type; (*Diagnose des Speicherbereichs*)
+	iGetPipeCnt : UINT;
+	DTGetTime_Fub : DTGetTime;
+	dtActTime : DATE_AND_TIME;
+END_VAR
+(*- - - Bur Logger*)
+VAR
+	CmdBurLogBook : ServBurLog_typ;
+	sLogger : Logger_typ;
+END_VAR
+(*- - - Dummy vars: for the compiler*)
+VAR
+	Exist_LoggerEnable : ARRAY[0..LOGGER_START_ENABLE] OF USINT; (*not used*)
+END_VAR

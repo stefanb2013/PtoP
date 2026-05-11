@@ -1,0 +1,7 @@
+VAR
+	PtopInitFub : PtopInit;
+	LifeServer_0 : PtopLifeCheckServer;
+	LifeServer_1 : PtopLifeCheckServer;
+	LifeServer_2 : PtopLifeCheckServer;
+	LifeCheckState : ARRAY[0..9] OF USINT;
+END_VAR

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Package" Description="für 10.49.10.222">X20</Object>
+    <Object Type="Package">CP360</Object>
+    <Object Type="Package" Description="ptop Configuration">Configuration</Object>
+    <Object Type="Package" Description="für 10.49.10.223">X20_1</Object>
+    <Object Type="Package">Small</Object>
+    <Object Type="Package" Description="test for SG3: 3 Stationen (BMW Dgf/Kalbe)">CP260</Object>
+    <Object Type="Package" Description="kleines Szenario mit 2 Stationen">Test_2</Object>
+    <Object Type="Package" Description="mit statischen IP Adressen" TransferedForTargetSourceCompare="true">1zu1_Office</Object>
+    <Object Type="Package" Description="mit IP Adressen von DHCP Server" TransferedForTargetSourceCompare="true">1zu1_Office1</Object>
+  </Objects>
+</Package>

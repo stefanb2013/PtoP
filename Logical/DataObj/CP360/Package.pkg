@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.90.28 SP10?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="DataObject" Language="Simple">ptop</Object>
+    <Object Type="DataObject" Language="Simple">ptop_1</Object>
+    <Object Type="DataObject" Language="Simple">ptop_2</Object>
+    <Object Type="DataObject" Language="Simple">ptop_3</Object>
+    <Object Type="DataObject" Language="Simple">ptop_x</Object>
+    <Object Type="DataObject" Language="Simple">ptop_y</Object>
+  </Objects>
+</Package>

@@ -1,0 +1,7 @@
+PROGRAM _CYCLIC
+(* cyclic program *)
+ptopTargetPV[0] = ptopTargetPV[0]
+ptopSourcePV[0] = ptopSourcePV[0]
+ptopSourceBOOL[0] = ptopSourceBOOL[0]
+END_PROGRAM
+

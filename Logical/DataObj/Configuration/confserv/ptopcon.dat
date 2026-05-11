@@ -1,0 +1,5 @@
+00001,	; Identifikation
+00200,	; Pipegröße für einen Client auf Server
+00050,	; zu überprüfende Variablen je Zyklus
+00200   ; Anzahl der zu verwaltenden Variablen
+00100   ; Anzahl der zu verwaltenden Clients

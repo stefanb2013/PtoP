@@ -1,0 +1,7 @@
+PROGRAM _INIT
+(* init program *)
+VarQuelle[0] = VarQuelle[0]
+VarZiel[0] = VarZiel[0]
+ptopTargetBOOL[0] = ptopTargetBOOL[0]
+END_PROGRAM
+

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?AutomationStudio FileVersion="4.9"?>
+<BR.AS.HardwareTopology>
+  <TimeStamps>
+    <TimeStamp LogicalPath="X20EM1612.Hardware.hw" LastWriteTime="08/13/2024 15:54:37" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="X20EM0612" Type="X20EM0612" X="100" Y="100" />
+  </Modules>
+  <Links />
+  <InfoElements />
+</BR.AS.HardwareTopology>

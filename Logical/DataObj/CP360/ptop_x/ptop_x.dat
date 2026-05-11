@@ -1,0 +1,41 @@
+;*********************************************************************************************
+;
+; Datenmodul zur Rangierung von Variablen über das Ethernet, angefordert über den HOST Namen
+; des Servers.
+;
+;*********************************************************************************************
+
+
+
+"#UST"										;Schluesselwort fuer die einzelne UST
+"#Hostname:audiinba0041"					;Hostname des Servers
+02000, 00000, 00000, 00000, 00000  			;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+
+; VarServer         VarClient      Hyst   Init   Reman. Ersatz  Sync
+"sw_StuetzEin[0]","sw_StuetzEin[0]",00020, 00010, 00001, 00002, 00000
+"sw_StuetzAus[1]","sw_StuetzAus[1]",00020, 00010, 00001, 00002, 00000
+"sw_SNK_AT_min[2]","sw_SNK_AT_min[2]",00020, 00010, 00001, 00002, 00000
+"sw_SNK_RT_min[3]","sw_SNK_RT_min[3]",00020, 00010, 00001, 00002, 00000
+"sw_SNK_Diff_Ein[4]","sw_SNK_Diff_Ein[4]",00020, 00010, 00001, 00002, 00000
+"sw_SNK_Diff_Aus[5]","sw_SNK_Diff_Aus[5]",00020, 00010, 00001, 00002, 00000
+"sw_Enteisung[6]","sw_Enteisung[6]",00020, 00010, 00001, 00002, 00000
+"sw_Sokom_ATmin[7]","sw_Sokom_ATmin[7]",00020, 00010, 00001, 00002, 00000
+"sw_Sokom_ATmax[8]","sw_Sokom_ATmax[8]",00020, 00010, 00001, 00002, 00000
+"sw_Sokom_ZTmin[9]","sw_Sokom_ZTmin[9]",00020, 00010, 00001, 00002, 00000
+"sw_Sokom_ZTmax[10]","sw_Sokom_ZTmax[10]",00020, 00010, 00001, 00002, 00000
+"sw_Wokom_ATmin[11]","sw_Wokom_ATmin[11]",00020, 00010, 00001, 00002, 00000
+"sw_Wokom_ATmax[12]","sw_Wokom_ATmax[12]",00020, 00010, 00001, 00002, 00000
+"sw_Wokom_ZTmin[13]","sw_Wokom_ZTmin[13]",00020, 00010, 00001, 00002, 00000
+"sw_Wokom_ZTmax[14]","sw_Wokom_ZTmax[14]",00020, 00010, 00001, 00002, 00000
+"dm_Enteisung_Anlage_1_1[15]","dm_Enteisung_Anlage_1_1[15]",00020, 00010, 00001, 00002, 00000
+"dm_ZLT_N24_0041[16]","dm_ZLT_N24_0041[16]",00020, 00010, 00001, 00002, 00000
+
+
+"#UST"										;Schluesselwort fuer die einzelne UST
+"#Hostname:audiinba0008"					;Hostname des Servers
+03000, 00000, 00000, 00000, 00000  ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer         VarClient      Hyst   Init   Reman. Ersatz  Sync
+"an_Aussentemp_F4_16B2[0]","an_Aussentemp_F4_16B2[0]",00020, 00010, 00001, 00002, 00000
+"dm_ZLT_N42_0008[1]","dm_ZLT_N42_0008[1]",00020, 00010, 00001, 00002, 00000
+
+

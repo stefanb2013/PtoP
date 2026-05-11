@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.4.6.71 SP?>
+<Library xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>PtopLib.var</File>
+    <File>PtopLib.typ</File>
+    <File>ptoplib.c</File>
+    <File>ptopServGetClients.c</File>
+    <File>ptoplibinc.h</File>
+    <File>PtopLib.fun</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="sys_lib" />
+    <Dependency ObjectName="PtopDec" />
+  </Dependencies>
+</Library>

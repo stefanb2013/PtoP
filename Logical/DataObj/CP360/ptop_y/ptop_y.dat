@@ -1,0 +1,195 @@
+"#UST"												;Schluesselwort für einzelne UST
+"#Hostname:tralala"
+02000, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[0]",			00000, 00000, 00000, 00005, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[1]",			00000, 00000, 00000, 00006, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[2]",			00000, 00000, 00000, 00007, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[3]",			00000, 00000, 00000, 00008, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[4]",			00000, 00000, 00000, 00009, 00000
+
+"#UST"												;Schluesselwort für einzelne UST
+10,49,10,222,										;IP - Adresse des Servers
+02000, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[5]",			00000, 00000, 00000, 00005, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[6]",			00000, 00000, 00000, 00006, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[7]",			00000, 00000, 00000, 00007, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[8]",			00000, 00000, 00000, 00008, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[9]",			00000, 00000, 00000, 00009, 00000
+
+"#UST"												;Schluesselwort für einzelne UST
+"#Hostname:station2"								;IP - Adresse des Servers
+03334, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"tst:VarQuelle[0]","tst:VarZiel[0]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[1]","tst:VarZiel[1]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[2]","tst:VarZiel[2]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[3]","tst:VarZiel[3]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[4]","tst:VarZiel[4]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[5]","tst:VarZiel[5]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[6]","tst:VarZiel[6]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[7]","tst:VarZiel[7]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[8]","tst:VarZiel[8]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[9]","tst:VarZiel[9]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[10]","tst:VarZiel[10]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[11]","tst:VarZiel[11]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[12]","tst:VarZiel[12]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[13]","tst:VarZiel[13]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[14]","tst:VarZiel[14]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[15]","tst:VarZiel[15]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[16]","tst:VarZiel[16]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[17]","tst:VarZiel[17]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[18]","tst:VarZiel[18]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[19]","tst:VarZiel[19]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[20]","tst:VarZiel[20]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[21]","tst:VarZiel[21]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[22]","tst:VarZiel[22]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[23]","tst:VarZiel[23]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[24]","tst:VarZiel[24]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[25]","tst:VarZiel[25]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[26]","tst:VarZiel[26]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[27]","tst:VarZiel[27]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[28]","tst:VarZiel[28]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[29]","tst:VarZiel[29]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[30]","tst:VarZiel[30]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[31]","tst:VarZiel[31]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[32]","tst:VarZiel[32]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[33]","tst:VarZiel[33]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[34]","tst:VarZiel[34]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[35]","tst:VarZiel[35]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[36]","tst:VarZiel[36]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[37]","tst:VarZiel[37]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[38]","tst:VarZiel[38]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[39]","tst:VarZiel[39]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[40]","tst:VarZiel[40]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[41]","tst:VarZiel[41]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[42]","tst:VarZiel[42]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[43]","tst:VarZiel[43]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[44]","tst:VarZiel[44]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[45]","tst:VarZiel[45]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[46]","tst:VarZiel[46]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[47]","tst:VarZiel[47]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[48]","tst:VarZiel[48]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[49]","tst:VarZiel[49]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[50]","tst:VarZiel[50]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[51]","tst:VarZiel[51]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[52]","tst:VarZiel[52]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[53]","tst:VarZiel[53]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[54]","tst:VarZiel[54]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[55]","tst:VarZiel[55]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[56]","tst:VarZiel[56]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[57]","tst:VarZiel[57]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[58]","tst:VarZiel[58]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[59]","tst:VarZiel[59]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[60]","tst:VarZiel[60]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[61]","tst:VarZiel[61]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[62]","tst:VarZiel[62]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[63]","tst:VarZiel[63]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[64]","tst:VarZiel[64]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[65]","tst:VarZiel[65]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[66]","tst:VarZiel[66]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[67]","tst:VarZiel[67]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[68]","tst:VarZiel[68]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[69]","tst:VarZiel[69]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[70]","tst:VarZiel[70]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[71]","tst:VarZiel[71]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[72]","tst:VarZiel[72]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[73]","tst:VarZiel[73]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[74]","tst:VarZiel[74]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[75]","tst:VarZiel[75]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[76]","tst:VarZiel[76]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[77]","tst:VarZiel[77]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[78]","tst:VarZiel[78]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[79]","tst:VarZiel[79]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[80]","tst:VarZiel[80]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[81]","tst:VarZiel[81]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[82]","tst:VarZiel[82]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[83]","tst:VarZiel[83]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[84]","tst:VarZiel[84]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[85]","tst:VarZiel[85]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[86]","tst:VarZiel[86]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[87]","tst:VarZiel[87]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[88]","tst:VarZiel[88]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[89]","tst:VarZiel[89]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[90]","tst:VarZiel[90]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[91]","tst:VarZiel[91]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[92]","tst:VarZiel[92]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[93]","tst:VarZiel[93]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[94]","tst:VarZiel[94]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[95]","tst:VarZiel[95]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[96]","tst:VarZiel[96]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[97]","tst:VarZiel[97]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[98]","tst:VarZiel[98]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[99]","tst:VarZiel[99]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[100]","tst:VarZiel[100]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[101]","tst:VarZiel[101]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[102]","tst:VarZiel[102]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[103]","tst:VarZiel[103]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[104]","tst:VarZiel[104]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[105]","tst:VarZiel[105]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[106]","tst:VarZiel[106]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[107]","tst:VarZiel[107]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[108]","tst:VarZiel[108]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[109]","tst:VarZiel[109]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[110]","tst:VarZiel[110]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[111]","tst:VarZiel[111]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[112]","tst:VarZiel[112]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[113]","tst:VarZiel[113]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[114]","tst:VarZiel[114]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[115]","tst:VarZiel[115]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[116]","tst:VarZiel[116]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[117]","tst:VarZiel[117]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[118]","tst:VarZiel[118]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[119]","tst:VarZiel[119]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[120]","tst:VarZiel[120]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[121]","tst:VarZiel[121]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[122]","tst:VarZiel[122]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[123]","tst:VarZiel[123]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[124]","tst:VarZiel[124]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[125]","tst:VarZiel[125]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[126]","tst:VarZiel[126]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[127]","tst:VarZiel[127]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[128]","tst:VarZiel[128]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[129]","tst:VarZiel[129]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[130]","tst:VarZiel[130]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[131]","tst:VarZiel[131]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[132]","tst:VarZiel[132]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[133]","tst:VarZiel[133]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[134]","tst:VarZiel[134]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[135]","tst:VarZiel[135]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[136]","tst:VarZiel[136]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[137]","tst:VarZiel[137]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[138]","tst:VarZiel[138]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[139]","tst:VarZiel[139]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[140]","tst:VarZiel[140]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[141]","tst:VarZiel[141]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[142]","tst:VarZiel[142]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[143]","tst:VarZiel[143]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[144]","tst:VarZiel[144]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[145]","tst:VarZiel[145]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[146]","tst:VarZiel[146]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[147]","tst:VarZiel[147]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[148]","tst:VarZiel[148]",00020, 00010, 00001, 00002, 00000
+"tst:VarQuelle[149]","tst:VarZiel[149]",00020, 00010, 00001, 00002, 00000
+
+"#UST"												;Schluesselwort für einzelne UST
+"#Hostname:station3"								;IP - Adresse des Servers
+55555, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[5]",			00000, 00000, 00000, 00005, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[6]",			00000, 00000, 00000, 00006, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[7]",			00000, 00000, 00000, 00007, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[8]",			00000, 00000, 00000, 00008, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[9]",			00000, 00000, 00000, 00009, 00000
+
+"#UST"												;Schluesselwort für einzelne UST
+"#Hostname:station4"								;IP - Adresse des Servers
+01111, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[5]",			00000, 00000, 00000, 00005, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[6]",			00000, 00000, 00000, 00006, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[7]",			00000, 00000, 00000, 00007, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[8]",			00000, 00000, 00000, 00008, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[9]",			00000, 00000, 00000, 00009, 00000
+

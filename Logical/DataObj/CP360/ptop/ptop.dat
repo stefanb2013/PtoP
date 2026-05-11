@@ -1,0 +1,15 @@
+"#UST"                        ;Schluesselwort für einzelne UST
+"#Modus:1"
+10,49,10,222
+02000, 00000, 00000, 00000, 00000          ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer             VarClient        Hyst   Init   Reman. Ersatz  Sync
+"test:ptopSourcePV[0]",      "test1:ptopTargetPV[50]",      00000, 00000, 00000, 10001, 00000
+
+"#UST"                        ;Schluesselwort für einzelne UST
+"#Modus:1"
+10,49,10,223
+02000, 00000, 00000, 00000, 00000          ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer             VarClient        Hyst   Init   Reman. Ersatz  Sync
+"test:ptopSourcePV[0]",      "test1:ptopTargetPV[0]",      00000, 00000, 00000, 10001, 00000
+"Tralalala",            "test1:ptopTargetPV[2]",      00000, 00000, 00000, 10002, 00000
+

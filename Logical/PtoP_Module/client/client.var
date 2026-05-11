@@ -1,0 +1,263 @@
+(*****************************************************************
+  File: client.var
+  Date: 2018.07.12 10:28
+*****************************************************************)
+(*- - - UDP Bibliothek - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *)
+VAR
+	UDPopenFub : ARRAY[0..PORT_CNT_ARR] OF UdpOpen; (*Port schliessen*)
+	UDPcloseFub : ARRAY[0..PORT_CNT_ARR] OF UdpClose; (*Port schliessen*)
+	UDPreceiveFub : UdpRecv; (*UDP Empfangen*)
+	UDPsendFub : UdpSend; (*UDP Senden*)
+	UDPreceiveEventFub : UdpRecv; (*UDP Empfangen f. Eventauswertung*)
+	UDPsendEventFub : UdpSend; (*UDP Senden f. Eventauswertung*)
+	UDPreceiveLifeFub : UdpRecv; (*UDP Empfangen f. Livecheckauswertung*)
+	UDPsendLifeFub : UdpSend; (*UDP Senden f. Livecheckauswertung*)
+	UdpIoctlFub : {REDUND_UNREPLICABLE} ARRAY[0..5] OF UdpIoctl; (*UDP Setzen von Optionen*)
+	udpSendFlags : UDINT; (*Flags mit Optionen fuer das Senden*)
+	TONFub : TON; (*Zeitverzoegerung*)
+END_VAR
+(*--- Telegrammdeklarationen ------------------------------------------------------------------------- *)
+VAR
+	PVOpenRequest : PVOpenRequest_typ; (*Anfrage Anmeldung: Client -> Server *)
+	PVOpenResponse : PVOpenResponse_typ; (*Antwort Anmeldung: Client -> Server*)
+	PVOpenResponseX : PVOpenResponseX_typ; (*Antwort Anmeldung: Client -> Server*)
+	ClientConnectRequest : ClientConnectRequest_typ; (*Anfrage PV Anmeldung: Client -> Server*)
+	ClientConnectResponse : ClientConnectResponse_typ; (*Antwort PV Anmeldung: Client -> Server*)
+	PVEvent : PVEvent_typ; (*Eventtelegramm: Server -> Client*)
+	PVEventX : PVEventX_typ; (*Eventtelegramm: Server -> Client (geblockter Modus)*)
+	PVEventXCopy : PVEventX_typ; (*Eventtelegramm: Server -> Client (einfachter Modus)*)
+	PVEventAcknowledge : PVEventAcknowledge_typ; (*Bestätigung Eventtelegramme Client -> Server*)
+	LifeCheckRequest : LifeCheckRequest_typ; (*Lifecheck - Anforderung Client -> Server*)
+	LifeCheckResponse : LifeCheckResponse_typ; (*Lifecheck - Antwort Server - Client*)
+	ClientLink : ClientLink_typ; (*Link des Clients auf Server*)
+	NAK : AckResponse_typ; (*Bestaetigung Link: Server -> Client*)
+END_VAR
+(*- - - f�r Diagnose*)
+VAR
+	sPVOpenRequest : PVOpenRequest_typ; (*fuer Diagnose*)
+	ClientLinkSave : ClientLink_typ; (*fuer Diagnose*)
+	PVEventAcknowledgeSave : PVEventAcknowledge_typ; (*fuer Diagnose*)
+	LifeCheckRequestSave : LifeCheckRequest_typ; (*fuer Diagnose*)
+	ClientConnectRequestSave : ClientConnectRequest_typ; (*fuer Diagnose*)
+END_VAR
+(*- - - Ip Adressen Speicher*)
+VAR
+	arRecvOpenIpAdr : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen (nur Dummy, damit Adresse uebergeben wird*)
+	arRecvEvntIpAdr : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen (nur Dummy, damit Adresse uebergeben wird*)
+	arRecvLifeIpAdr : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen (nur Dummy, damit Adresse uebergeben wird*)
+END_VAR
+(*- - - Speicherverwaltung*)
+VAR
+	pVariablenVerwaltungStart : REFERENCE TO PvList_Typ;
+	pClientVerwaltungStart : REFERENCE TO Client_List_Typ; (*Startadresse der Serververwaltungsliste*)
+END_VAR
+(*- - -Ini - Variablenbehandlung*)
+VAR
+	pPVInit : REFERENCE TO PvList_Typ;
+END_VAR
+(*- - - Generierung Telegramme; Vorbelegung der UDP Fubs*)
+VAR
+	PortSource : ARRAY[0..PORT_CNT_ARR] OF UDINT;
+	PortTarget : ARRAY[0..PORT_CNT_ARR] OF UDINT; (*Ports fuer Server*)
+	IPAdresseSource : UDINT; (*eigene IP Adresse*)
+	arIpAdrSource : ARRAY[0..17] OF USINT; (*Ip - Adresse des Senders ablegen*)
+	sIpAdrSource : GetIpAdrSource_type; (*Verwaltung f. Ermittlung d. Ip Adresse*)
+END_VAR
+(*- - - Speicherverwaltung*)
+VAR
+	FlagInitOk : ARRAY[0..2] OF BOOL;
+	HelpString1 : ARRAY[0..63] OF USINT; (*String 1 fuer das zusammenkopieren von Logbucheintraegen*)
+	HelpString2 : ARRAY[0..31] OF USINT; (*String 2 fuer das zusammenkopieren von Logbucheintraegen*)
+END_VAR
+(*- - - Parsen des Datenmoduls*)
+VAR
+	pStartParsData : REFERENCE TO USINT; (*Startadresse des Datenmoduls*)
+	ParsLen : UDINT; (*Gesamtlaenge des Datenmoduls*)
+	bParsMaxReached : BOOL; (*max. Anzahl der PVs ueberschritten*)
+END_VAR
+(*- - - Schrittvariablen*)
+VAR
+	StepConnect : PtopStepProt_type;
+	StepEvent : PtopStepProt_type;
+	StepLifeCheck : PtopStepProt_type;
+	StepGetIpAdr : PtopStepProt_type;
+END_VAR
+(*- - - Buffer fuer UDP - Fkt. - - - - *)
+VAR
+	arSendBufLife : ARRAY[0..LIFE_BUFFER_LEN_ARR] OF USINT; (*Sende - Buffer fuer Lifecheck*)
+	arRecvBufLife : ARRAY[0..LIFE_BUFFER_LEN_ARR] OF USINT; (*Empfangs - Buffer fuer Lifechek*)
+END_VAR
+(*- - - PV und Clienthandling Anmeldung - - - - - - - - - *)
+VAR
+	pVariablenManagement : REFERENCE TO PvList_Typ;
+	pClientManagement : REFERENCE TO Client_List_Typ; (*Pointer auf Server Liste fuer Anmeldung*)
+END_VAR
+(*- - - Anmeldestatus - Handling - - - - - - - -*)
+VAR
+	pVariablenAnmeldung : REFERENCE TO PvList_Typ; (*Pointer auf PV Liste fuer Anmeldestatus*)
+END_VAR
+(*- - - PV und Clienthandling Lifecheck - - - - - - - - -*)
+VAR
+	pClientLife : REFERENCE TO Client_List_Typ; (*Pointer auf Server Liste fuer Lifecheck*)
+END_VAR
+(*- - - PV und Clienthandling Eventauswertung - - - - - - - - -*)
+VAR
+	pVariablenEvent : REFERENCE TO PvList_Typ;
+	pClientEvent : REFERENCE TO Client_List_Typ; (*Pointer auf Server Liste fuer Eventbehandlung*)
+END_VAR
+(*- - - Zeigervariablen zum kopieren von 1, 2 u. 4 Byte Werte*)
+VAR
+	pPVWert08 : REFERENCE TO USINT;
+	pPVWert16 : REFERENCE TO UINT;
+	pPVWert32 : REFERENCE TO UDINT;
+END_VAR
+(*- - - Anmelden der Variablen - - - - - - - -*)
+VAR
+	uiNextRegServer : UINT; (*naechster Server zum Anmelden *)
+	uiActRegServer : UINT; (*an welchen Server wurde gerade angemeldet?*)
+	bRegServFound : UINT; (*ein gueltiger Server wurde gefunden und Anmeldung beginnt*)
+	TimeoutCnt : UINT; (*Timeout Zaehler fuer Lebensueberwachung*)
+	uiActRegPv : UINT; (*aktuelle PV die angemeldet wird*)
+	uiLoopStartPv : UINT; (*erste gefunden PV, welche zum Server gesendet wird*)
+	OpenFailed : UINT; (*Anmelden einer Variable gescheitert*)
+	AcknowledgeFailed : UINT; (*keine Antwort vom Server*)
+	ConnReceiveFailed : UINT;
+	OpenUDPCnt : UINT; (*ueberpruefung, ob alle UDP - Open fubs einen Identifier bekommen haben*)
+	NeuAnmeldungLaeuft : BOOL; (*x - beliebiger Server wird nach Startup angemeldet*)
+	NeuAnmeldung : BOOL; (*sobald dieses Flag auf 1 gesetzt wird, wird der komplette Anmeldevorgang wiederholt*)
+	OpenErrorCnt : UINT; (*wird erhoeht, sobald eine Variable nicht angemeldet werden konnte*)
+	PVOpenCnt : UINT; (*Anzahl der Durchlaeufe bei einer Anmeldung an Server*)
+END_VAR
+(*- - - CRC - - - -*)
+VAR
+	CRCCheckTemp : UINT; (*CRC Rueckgabe Variable*)
+END_VAR
+(*- - - Zählervariablen*)
+VAR
+	uiLoopOpenRequest : UINT;
+	uiLoopOpenPorts : UINT;
+	uiLoopRemPv : UINT;
+	uiLoopRegServ : UINT;
+	uiLoopResetServ : UINT;
+	uiLoopClosePort : UINT;
+END_VAR
+(*- - - PV Monitor*)
+VAR
+	Monitor : MonitorClient_typ;
+	PvMonitor : PvList_Typ;
+	ClientMonitor : Client_List_Typ;
+	LogbuchCnt : USINT; (*Zaehler fuer Logbucheintraege*)
+	NeuAnmeldungHand : ARRAY[0..MAX_SERVER_ARR] OF BOOL; (*neues Anmelden eines Clients forcieren*)
+	NeuAnmeldungFehler : ARRAY[0..MAX_SERVER_ARR] OF BOOL;
+	bRequestConn : ARRAY[0..MAX_SERVER_ARR] OF BOOL;
+	uiSaveServerReconn : UINT;
+END_VAR
+(*- - -Lifecheck*)
+VAR
+	LifeCheck : Lifecheck_typ;
+	LifeCnt : UINT;
+	LifeCntAct : UINT;
+	Lebensueberwachung : ARRAY[0..MAX_SERVER_ARR] OF BOOL;
+	lifecnt : UINT;
+	serverIndex : UINT;
+END_VAR
+(*- - -Zeit - Funktion*)
+VAR
+	StatusTimer : UINT;
+	udTimeTick : UDINT;
+	udMaxTimeTick : UDINT;
+	udMinTimeTick : UDINT;
+	udStartTimeTick : UDINT;
+	udActTimeTick : UDINT;
+	udEndTimeTick : UDINT;
+END_VAR
+(*- - -Diagnose ptop Kommunikation*)
+VAR
+	uiGetIpServer : UINT;
+	sHostByName : HostByName; (* aktueller Server f. Ermittlung d. Ip Adresse *)
+	pClientGetIpAdr : REFERENCE TO Client_List_Typ;
+	sdStrCmp : DINT;
+	udIoCtlParamSendBuf : UDINT; (*--- Buffergroesse f. Sendbuffer*)
+	udIoCtlParamRecvBuf : UDINT; (*--- Buffergroesse f. Empfangsbuffer*)
+	uiSetOptions : UINT; (*--- Schleifenvariable fuer Setzen f. Optionen/UDP*)
+	uiSetOptionsCnt : UINT; (*--- Zaehlervariable f. gesetzte Optionen /UDP*)
+	pSendBufOpen : REFERENCE TO UDINT; (*Buffer fuer Telegramm "OPEX" und OPEN*)
+	pRecvBufOpen : REFERENCE TO UDINT; (*Buffer fuer Telegramm "OPEX" und OPEN*)
+	pSendBufEvnt : REFERENCE TO UDINT; (*Buffer fuer Telegramm "EVNX" und EVNT*)
+	pRecvBufEvnt : REFERENCE TO UDINT; (*Buffer fuer Telegramm "EVNX" und EVNT*)
+	uiTelOpenLen : UINT; (*wirkliche Telegrammlaenge*)
+	bServIsValid : BOOL; (*kann Server x angemeldet werden, Check der Parametrierungsdaten v. Datenmodul*)
+	arKennung : ARRAY[0..3] OF USINT; (*Telegrammkennung umkopieren*)
+	bValidate : BOOL;
+	uiPvCnt : UINT;
+	uiClientIndex : UINT;
+	uiPvEntry : UINT;
+	bGetData : BOOL;
+	uiState : UINT;
+	uiEventCnt : UINT;
+	bEventGet : BOOL; (*gueltiges Event-Telegramm wurde empfangen*)
+	uiEventState : UINT;
+	bCheckIpAdr : BOOL;
+	DTGetTime_Fub : DTGetTime;
+	dtActTime : DATE_AND_TIME;
+	bPvFound : BOOL;
+END_VAR
+(*- - - Speicherverwaltung*)
+VAR
+	sPvConnect : PvConnect_Typ;
+	sMemManager : MemManager_type; (*Struktur zur Speicherverwaltung*)
+	DataObjCreateFub : DatObjCreate; (*Erzeugen eines Datenobjektes*)
+	DatObjInfoFub : DatObjInfo; (*Ermitteln der Datenobjekt - Info*)
+	DatObjDeleteFub : DatObjDelete; (*Loeschen eines Datenobjektes*)
+	udAdrOffset : UDINT; (*Hilfsvariable zur Adressbestimmung*)
+	sServerConn : ARRAY[0..MAX_SERVER_ARR] OF ServerConn_typ; (*Status und Kommandovariable zur Anmeldung an Server*)
+	bVarReadInit : BOOL;
+END_VAR
+(*- - - Diagnose Variablen*)
+VAR
+	DIAG_Max_Variables : UINT;
+	DIAG_Max_Clients : UINT;
+	DIAG_lenConvertIpAdr : UINT;
+	SwVersion : UDINT;
+	sMemDiag : MemManagerDiag_type;
+	Diagnose : DiagnoseClntMain_typ; (*main diagnose structur*)
+END_VAR
+(*- - - Parsen des Datenobjekts intern*)
+VAR
+	StartParsen : BOOL; (*Parsen wird aktiviert*)
+	pParsData : REFERENCE TO USINT; (*Arbeitszeiger im Datenmodul*)
+	udCntDM : UDINT; (*Zaehler fuer Schleife Datenmodul*)
+	ResultStrCmp : USINT; (*Ergebnis des String-Vergleichenes-> 0 bedeutet gleiche Strings*)
+	uiCntOffset : UDINT; (*Byte- Offset innerhalb des Moduls*)
+	Buffer : ARRAY[0..14] OF USINT; (*Kontrolle der Daten je UST -> #UST?*)
+	SaveUSTData : BOOL; (*UST Daten gefunden*)
+	ZaehlerVariablen : UDINT;
+	GroeszeString : USINT; (*Groesse des Variablenstrings*)
+	ReadVar : ReadVar_typ;
+	ReadUST : ReadUST_typ;
+	VarStringCnt : USINT; (*Variablenauswertung -> Quell- od. Zielvar.*)
+	DummyVar : USINT;
+	VariablenOffset : USINT;
+	PositionVariable : UDINT; (*Istwert der Schleifenvariable vor jeder Variableauswertung*)
+	AktServer : USINT;
+	FlagAbbruch : BOOL;
+	x : UDINT;
+	cnt : UDINT;
+	AktVar : UINT; (*wieviele PV wurden gezaehlt*)
+END_VAR
+(*Bur Logger*)
+VAR
+	CmdBurLogBook : ClntBurLog_typ;
+	sLogger : Logger_typ;
+END_VAR
+(*- - - Debugging*)
+VAR
+	bInitDebug : BOOL;
+	iInitDebug : UDINT;
+	bTest1 : BOOL;
+	bTest : BOOL;
+END_VAR
+(*- - - Dummy vars: for the compiler*)
+VAR
+	Exist_LoggerEnable : ARRAY[0..LOGGER_START_ENABLE] OF USINT; (*not used*)
+END_VAR

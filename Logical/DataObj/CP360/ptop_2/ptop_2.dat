@@ -1,0 +1,116 @@
+"#UST"												;Schluesselwort für einzelne UST
+"#Modus:1"
+10,49,10,223
+02000, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[0]",			00000, 00000, 00000, 10001, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[1]",			00000, 00000, 00000, 10002, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[2]",			00000, 00000, 00000, 10003, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[3]",			00000, 00000, 00000, 10004, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[4]",			00000, 00000, 00000, 10004, 00000
+"ptopSourcePV[5]",					"ptopTargetPV[5]",			00000, 00000, 00000, 10005, 00000
+"ptopSourcePV[6]",					"ptopTargetPV[6]",			00000, 00000, 00000, 10006, 00000
+"ptopSourcePV[7]",					"ptopTargetPV[7]",			00000, 00000, 00000, 10007, 00000
+"ptopSourcePV[8]",					"ptopTargetPV[8]",			00000, 00000, 00000, 10008, 00000
+"ptopSourcePV[9]",					"ptopTargetPV[9]",			00000, 00000, 00000, 10009, 00000
+"ptopSourcePV[10]",					"ptopTargetPV[10]",			00000, 00000, 00000, 20001, 00000
+"ptopSourcePV[11]",					"ptopTargetPV[11]",			00000, 00000, 00000, 20002, 00000
+"ptopSourcePV[12]",					"ptopTargetPV[12]",			00000, 00000, 00000, 20003, 00000
+"ptopSourcePV[13]",					"ptopTargetPV[13]",			00000, 00000, 00000, 20004, 00000
+"ptopSourcePV[14]",					"ptopTargetPV[14]",			00000, 00000, 00000, 20005, 00000
+"ptopSourcePV[15]",					"ptopTargetPV[15]",			00000, 00000, 00000, 20006, 00000
+"ptopSourcePV[16]",					"ptopTargetPV[16]",			00000, 00000, 00000, 20007, 00000
+"ptopSourcePV[17]",					"ptopTargetPV[17]",			00000, 00000, 00000, 20008, 00000
+"ptopSourcePV[18]",					"ptopTargetPV[18]",			00000, 00000, 00000, 20009, 00000
+"ptopSourcePV[19]",					"ptopTargetPV[19]",			00000, 00000, 00000, 30001, 00000
+"ptopSourcePV[20]",					"ptopTargetPV[20]",			00000, 00000, 00000, 30002, 00000
+"ptopSourcePV[21]",					"ptopTargetPV[21]",			00000, 00000, 00000, 30003, 00000
+"ptopSourcePV[22]",					"ptopTargetPV[22]",			00000, 00000, 00000, 30003, 00000
+"ptopSourcePV[23]",					"ptopTargetPV[23]",			00000, 00000, 00000, 30004, 00000
+"ptopSourcePV[24]",					"ptopTargetPV[24]",			00000, 00000, 00000, 30005, 00000
+"ptopSourcePV[25]",					"ptopTargetPV[25]",			00000, 00000, 00000, 30006, 00000
+"ptopSourcePV[26]",					"ptopTargetPV[26]",			00000, 00000, 00000, 30007, 00000
+"ptopSourcePV[27]",					"ptopTargetPV[27]",			00000, 00000, 00000, 30008, 00000
+"ptopSourcePV[28]",					"ptopTargetPV[28]",			00000, 00000, 00000, 30009, 00000
+"ptopSourcePV[29]",					"ptopTargetPV[29]",			00000, 00000, 00000, 40000, 00000
+"ptopSourcePV[30]",					"ptopTargetPV[30]",			00000, 00000, 00000, 20001, 00000
+"ptopSourcePV[31]",					"ptopTargetPV[31]",			00000, 00000, 00000, 20002, 00000
+"ptopSourcePV[32]",					"ptopTargetPV[32]",			00000, 00000, 00000, 20003, 00000
+"ptopSourcePV[33]",					"ptopTargetPV[33]",			00000, 00000, 00000, 20004, 00000
+"ptopSourcePV[34]",					"ptopTargetPV[34]",			00000, 00000, 00000, 20005, 00000
+"ptopSourcePV[35]",					"ptopTargetPV[35]",			00000, 00000, 00000, 20006, 00000
+"ptopSourcePV[36]",					"ptopTargetPV[36]",			00000, 00000, 00000, 20007, 00000
+"ptopSourcePV[37]",					"ptopTargetPV[37]",			00000, 00000, 00000, 20008, 00000
+"ptopSourcePV[38]",					"ptopTargetPV[38]",			00000, 00000, 00000, 20009, 00000
+"ptopSourcePV[39]",					"ptopTargetPV[39]",			00000, 00000, 00000, 30001, 00000
+"ptopSourcePV[40]",					"ptopTargetPV[40]",			00001, 00000, 00000, 30002, 00000
+"ptopSourcePV[41]",					"ptopTargetPV[41]",			00001, 00000, 00000, 30003, 00000
+"ptopSourcePV[42]",					"ptopTargetPV[42]",			00001, 00000, 00000, 30003, 00000
+"ptopSourcePV[43]",					"ptopTargetPV[43]",			00001, 00000, 00000, 30004, 00000
+"ptopSourcePV[44]",					"ptopTargetPV[44]",			00001, 00000, 00000, 30005, 00000
+"ptopSourcePV[45]",					"ptopTargetPV[45]",			00001, 00000, 00000, 30006, 00000
+"ptopSourcePV[46]",					"ptopTargetPV[46]",			00001, 00000, 00000, 30007, 00000
+"ptopSourcePV[47]",					"ptopTargetPV[47]",			00001, 00000, 00000, 30008, 00000
+"ptopSourcePV[48]",					"ptopTargetPV[48]",			00001, 00000, 00000, 30009, 00000
+"ptopSourcePV[49]",					"ptopTargetPV[49]",			00001, 00000, 00000, 40000, 00000
+"ptopBoolSource[0]",				"ptopBoolTarget[0]",		00000, 00000, 00000, 00000, 00000
+"ptopBoolSource[1]",				"ptopBoolTarget[1]",		00000, 00000, 00000, 00000, 00000
+"ptopBoolSource[2]",				"ptopBoolTarget[2]",		00000, 00000, 00000, 00000, 00000
+"ptopBoolSource[3]",				"ptopBoolTarget[3]",		00000, 00000, 00000, 00000, 00000
+"ptopBoolSource[4]",				"ptopBoolTarget[4]",		00000, 00000, 00000, 00000, 00000
+"ptopLongSource[0]",				"ptopLongTarget[0]",		00100, 00000, 00000, 00000, 00010
+"ptopLongSource[1]",				"ptopLongTarget[1]",		00200, 00000, 00000, 00000, 00010
+"ptopLongSource[2]",				"ptopLongTarget[2]",		00300, 00000, 00000, 00000, 00010
+
+"#UST"												;Schluesselwort für einzelne UST
+"#Modus:1"
+10,49,10,222
+02000, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[50]",			00000, 00000, 00000, 10001, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[51]",			00000, 00000, 00000, 10002, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[52]",			00000, 00000, 00000, 10003, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[53]",			00000, 00000, 00000, 10004, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[54]",			00000, 00000, 00000, 10004, 00000
+"ptopSourcePV[5]",					"ptopTargetPV[55]",			00000, 00000, 00000, 10005, 00000
+"ptopSourcePV[6]",					"ptopTargetPV[56]",			00000, 00000, 00000, 10006, 00000
+"ptopSourcePV[7]",					"ptopTargetPV[57]",			00000, 00000, 00000, 10007, 00000
+"ptopSourcePV[8]",					"ptopTargetPV[58]",			00000, 00000, 00000, 10008, 00000
+"ptopSourcePV[9]",					"ptopTargetPV[59]",			00000, 00000, 00000, 10009, 00000
+"ptopSourcePV[10]",					"ptopTargetPV[60]",			00000, 00000, 00000, 20001, 00000
+"ptopSourcePV[11]",					"ptopTargetPV[61]",			00000, 00000, 00000, 20002, 00000
+"ptopSourcePV[12]",					"ptopTargetPV[62]",			00000, 00000, 00000, 20003, 00000
+"ptopSourcePV[13]",					"ptopTargetPV[63]",			00000, 00000, 00000, 20004, 00000
+"ptopSourcePV[14]",					"ptopTargetPV[64]",			00000, 00000, 00000, 20005, 00000
+"ptopSourcePV[15]",					"ptopTargetPV[65]",			00000, 00000, 00000, 20006, 00000
+"ptopSourcePV[16]",					"ptopTargetPV[66]",			00000, 00000, 00000, 20007, 00000
+"ptopSourcePV[17]",					"ptopTargetPV[67]",			00000, 00000, 00000, 20008, 00000
+"ptopSourcePV[18]",					"ptopTargetPV[68]",			00000, 00000, 00000, 20009, 00000
+"ptopSourcePV[19]",					"ptopTargetPV[69]",			00000, 00000, 00000, 30001, 00000
+
+"#UST"												;Schluesselwort für einzelne UST
+"#Modus:1"
+10,49,10,204
+02000, 00000, 00000, 00000, 00000					;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer   					VarClient				Hyst   Init   Reman. Ersatz  Sync
+"ptopSourcePV[0]",					"ptopTargetPV[70]",			00000, 00000, 00000, 10001, 00000
+"ptopSourcePV[1]",					"ptopTargetPV[71]",			00000, 00000, 00000, 10002, 00000
+"ptopSourcePV[2]",					"ptopTargetPV[72]",			00000, 00000, 00000, 10003, 00000
+"ptopSourcePV[3]",					"ptopTargetPV[73]",			00000, 00000, 00000, 10004, 00000
+"ptopSourcePV[4]",					"ptopTargetPV[74]",			00000, 00000, 00000, 10004, 00000
+"ptopSourcePV[5]",					"ptopTargetPV[75]",			00000, 00000, 00000, 10005, 00000
+"ptopSourcePV[6]",					"ptopTargetPV[76]",			00000, 00000, 00000, 10006, 00000
+"ptopSourcePV[7]",					"ptopTargetPV[77]",			00000, 00000, 00000, 10007, 00000
+"ptopSourcePV[8]",					"ptopTargetPV[78]",			00000, 00000, 00000, 10008, 00000
+"ptopSourcePV[9]",					"ptopTargetPV[79]",			00000, 00000, 00000, 10009, 00000
+"ptopSourcePV[10]",					"ptopTargetPV[80]",			00000, 00000, 00000, 20001, 00000
+"ptopSourcePV[11]",					"ptopTargetPV[81]",			00000, 00000, 00000, 20002, 00000
+"ptopSourcePV[12]",					"ptopTargetPV[82]",			00000, 00000, 00000, 20003, 00000
+"ptopSourcePV[13]",					"ptopTargetPV[83]",			00000, 00000, 00000, 20004, 00000
+"ptopSourcePV[14]",					"ptopTargetPV[84]",			00000, 00000, 00000, 20005, 00000
+"ptopSourcePV[15]",					"ptopTargetPV[85]",			00000, 00000, 00000, 20006, 00000
+"ptopSourcePV[16]",					"ptopTargetPV[86]",			00000, 00000, 00000, 20007, 00000
+"ptopSourcePV[17]",					"ptopTargetPV[87]",			00000, 00000, 00000, 20008, 00000
+"ptopSourcePV[18]",					"ptopTargetPV[88]",			00000, 00000, 00000, 20009, 00000
+"ptopSourcePV[19]",					"ptopTargetPV[89]",			00000, 00000, 00000, 30001, 00000
+

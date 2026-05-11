@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.8.3.111 SP?>
+<Library SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Package variables">ptop_const.var</File>
+    <File Description="diagnostic definitions">diagnostic.typ</File>
+    <File Description="telegram definitions">telegram.typ</File>
+    <File Description="pipe definitions">pipe.typ</File>
+    <File Description="package data types">ptop.typ</File>
+    <File Description="extracted server types for the ptopLib">Server.typ</File>
+    <File Description="bur techguard data types">techguard.typ</File>
+    <File Description="stephandling, log and protocoll steps">StepHandler.typ</File>
+    <File Description="library default constants">Constants.var</File>
+    <File Description="functions and function blocks">PtopDec.fun</File>
+    <File>PtopDec.c</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="ArEventLog" />
+    <Dependency ObjectName="AsGuard" />
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="AsBrStr" />
+  </Dependencies>
+</Library>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio WorkingVersion="6.5" FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="X20CP3686X" Type="X20CP3686X" Version="1.10.0.0">
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="HostName" Value="ptopng_x20cp1686_2" />
+    </Connector>
+    <Connector Name="IF3">
+      <Parameter ID="EplHostName" Value="ptopng_x20cp1686_2" />
+      <Parameter ID="CycleTime" Value="2000" />
+      <Parameter ID="HostName" Value="ptopng_x20cp1686_2" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="ptop_Project" />
+    <Parameter ID="ConfigVersion" Value="6.51.0" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
+    <Parameter ID="EthernetHostName" Value="ptopng_x20cp1686_2" />
+    <Parameter ID="ActivateDns" Value="1" />
+    <Parameter ID="GetDnsFromDhcp" Value="2" />
+  </Module>
+</Hardware>

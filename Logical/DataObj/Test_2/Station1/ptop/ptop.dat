@@ -1,0 +1,18 @@
+"#UST"                      ;Keyword for a single station
+"#Modus:1"					;Modus - alter Modus = 0; neuer Modus = 1
+10,49,10,222
+02000, 00000, 00000, 00000, 00000          ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer             VarClient        Hyst   Init   Reman. Ersatz  Sync
+"test:ptopSourcePV[10]",          "test:ptopTargetPV[10]",      00000, 00000, 00000, 10001, 00010
+"test:ptopSourcePV[11]",          "test:ptopTargetPV[11]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[12]",          "test:ptopTargetPV[12]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[13]",          "test:ptopTargetPV[13]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[14]",          "test:ptopTargetPV[14]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[15]",          "test:ptopTargetPV[15]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[16]",          "test:ptopTargetPV[16]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[17]",          "test:ptopTargetPV[17]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[18]",          "test:ptopTargetPV[18]",      00000, 00000, 00000, 10002, 00010
+"test:ptopSourcePV[19]",          "test:ptopTargetPV[19]",      00000, 00000, 00000, 10002, 00010
+"test:ptopTargetBOOL[10]",        "test:ptopSourceBOOL[10]",    00000, 00000, 00000, 00000, 00010
+
+

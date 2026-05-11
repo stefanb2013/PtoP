@@ -1,0 +1,30 @@
+;***********************************************************************************
+;
+; Ptop Sample Modul 1
+;
+; Dieses Datenobjekt soll lediglich die Parametrierung eines Moduls zeigen
+;
+; Merkmal: Parametrierung über Hostname
+;
+;*************************************************************************************
+;
+; Datenmodul zur Ermittlung von Variablen, angefordert wird über den HOST Namen
+;
+;*********************************************************************************************
+
+
+"#UST"										  ;Schluesselwort fuer die einzelne UST
+"#Hostname:Testanlage1"			;Hostname des Servers  #1
+03000, 00000, 00000, 00000, 00000  ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer                       VarClient                        Hyst   Init   Reman. Ersatz  Sync
+"Task1:VariableQuelle1"       ,"TkClient:VariableZiel1"          ,00001, 00000, 00001, 65535, 00010
+"Task2:VariableQuelle2"       ,"TkClient:VariableZiel2"          ,00001, 00000, 00001, 65535, 00010
+
+
+"#UST"										  ;Schluesselwort fuer die einzelne UST
+"#Hostname:Testanlage2"			;Hostname des Servers
+05000, 00000, 00000, 00000, 00000  ;Timeout, Hysterese, Initwert, Remanenz, Ersatzwert
+; VarServer                       VarClient                        Hyst   Init   Reman. Ersatz  Sync
+"Task11:VariableQuelle1"      ,"TkClient:VariableZiel1"          ,00002, 00010, 00000, 65535, 00000
+"Task12:VariableQuelle2"      ,"TkClient:VariableZiel2"          ,00003, 00015, 00000, 65535, 00010
+
