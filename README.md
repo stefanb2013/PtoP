@@ -9,5 +9,5 @@ In order to give existing users of the software the opportunity to maintain thei
 Die Software "Peer-to-Peer NG Runtime" sowie alle Vorgängerversionen wurde zum 30.06.2026 durch B&R Industrie-Elektronik GmbH abgekündigt.
 Diese Software wird nicht mehr aktualisiert oder in irgendeiner anderen Art und Weise weiterentwickelt, gepflegt, gewartet und/oder gepatcht. Es erfolgen keine Fehlerbehebungen (Bugfixes), Sicherheitsupdates oder Anpassungen an neue Betriebssystemumgebungen. Ebenso werden evtl. sicherheitsrelevante Schwachstellen nicht mehr behoben.
 
-Um bisherigen Nutzern der Software die Möglichkeit zu geben, bestehende Systeme zu warten oder die Technologie in eigenen Projekten weiterzuführen, wurde der Quellcode dieser Software mit Zustimmung von B&R Industrie-Elektronik GmbH im vorliegenden Repository unter der MIT License zur Verfügung gestellt.
+Um bisherigen Nutzern der Software die Möglichkeit zu geben, bestehende Systeme zu warten oder die Technologie in eigenen Projekten weiterzuführen, wurde der Quellcode dieser Software mit Zustimmung von B&R Industrie-Elektronik GmbH im vorliegenden Repository unter der MIT License zur Verfügung gestellt. 
 
